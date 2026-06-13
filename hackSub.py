@@ -18,14 +18,28 @@ def get_word_pattern(word):
         pattern.append(letter_nums[letter])
 
     return ".".join(pattern)
+def build_pattern_dictionary(words):
+    pattern_dict = {}
+
+    for word in words:
+        pattern = get_word_pattern(word)
+
+        if pattern not in pattern_dict:
+            pattern_dict[pattern] = []
+
+        pattern_dict[pattern].append(word.upper())
+
+    return pattern_dict
 
 
 def main():
 
-    print(get_word_pattern("HELLO"))
-    print(get_word_pattern("JELLY"))
-    print(get_word_pattern("WORLD"))
+    words = ["HELLO", "JELLY", "WORLD", "APPLE", "LEVEL"]
 
+    pattern_dict = build_pattern_dictionary(words)
+
+    print(pattern_dict)
 
 if __name__ == "__main__":
     main()
+
